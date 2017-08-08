@@ -2,7 +2,7 @@
 
 namespace AggregatRoot
 {
-    public class OpendTabState : IOpendTab
+    public class OpendTab : IOpendTab
     {
         public IClosedTab Closed()
         {

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AggregatRoot.Messages
 {
-    public interface IEvent { }
-    public class TabOpendEvent : IEvent
+    public interface IDomainEvent { }
+    public class TabOpendEvent : IDomainEvent
     {
     }
 
-    public class TabClosedEvent : IEvent
+    public class TabClosedEvent : IDomainEvent
     {
     }
 }

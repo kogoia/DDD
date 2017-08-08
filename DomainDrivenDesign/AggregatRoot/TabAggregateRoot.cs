@@ -1,17 +1,25 @@
 ﻿using System;
 using AggregatRoot.Infrastructure;
 using AggregatRoot.Messages;
+using System.Collections.Generic;
 
 namespace AggregatRoot
 {
     public class TabAggregateRoot : EventSourcedRootEntity
         <
             TabOpendEvent, 
-            TabClosedEvent, 
+            TabClosedEvent,
+            TabCreatedEvent,
             Tab
         >
     {
-        public TabAggregateRoot(Tab root) : base(root)
+        public TabAggregateRoot(IEnumerable<IDomainEvent> eventStream) : base(eventStream)
+        {
+
+        }
+
+        public TabAggregateRoot(int tabId, string name)
+            : base(new List<IDomainEvent>() { new TabCreatedEvent(tabId, name) })
         {
         }
 
@@ -33,6 +41,16 @@ namespace AggregatRoot
                     (oTab) => new Tab(oTab.Closed()),
                     (cTab) => throw new Exception("Can't open ClosedTab")
                 );
+        }
+
+        protected override Tab When(TabCreatedEvent e)
+        {
+            return new Tab(
+                        new DefaultTab(
+                            e.TabId,
+                            e.Name
+                        )
+                    );
         }
     }
 
