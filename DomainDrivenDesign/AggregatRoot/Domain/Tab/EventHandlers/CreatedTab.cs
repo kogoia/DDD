@@ -1,11 +1,10 @@
-﻿using AggregatRoot.Domain.Tab;
+﻿using AggregatRoot.Domain.Tab.Events;
 using AggregatRoot.Domain.Tab.States;
-using AggregatRoot.Events.Messages;
 using AggregatRoot.Infrastructure;
 
-namespace AggregatRoot.Events.Handlers
+namespace AggregatRoot.Domain.Tab.EventHandlers
 {
-    public class CreatedTab : IApplicable<Tab>
+    public class CreatedTab : IApplicable<States.Types.Tab>
     {
         private readonly TabCreatedEvent _evnt;
 
@@ -19,11 +18,11 @@ namespace AggregatRoot.Events.Handlers
             _evnt = evnt;
         }
 
-        public AppliedEventResult<Tab> Apply()
+        public AppliedEventResult<States.Types.Tab> Apply()
         {
-            return new Applied<Tab>(
+            return new Applied<States.Types.Tab>(
                 _evnt,
-                new Tab(
+                new States.Types.Tab(
                     new DefaultTab(_evnt.TabId, _evnt.Name)
                 )
             ).Apply();

@@ -2,7 +2,8 @@
 
 namespace AggregatRoot.Infrastructure
 {
-    public abstract class Union<T1, T2, T3, T4>
+    public interface IUnion { }
+    public abstract class Union<T1, T2, T3, T4> : IUnion
     where T1 : class
     where T2 : class
     where T3 : class
@@ -43,7 +44,7 @@ namespace AggregatRoot.Infrastructure
         }
     }
 
-    public abstract class Union<T1, T2, T3>
+    public abstract class Union<T1, T2, T3> : IUnion
         where T1 : class
         where T2 : class
         where T3 : class
@@ -100,7 +101,7 @@ namespace AggregatRoot.Infrastructure
         //}
     }
 
-    public abstract class Union<T1, T2>
+    public abstract class Union<T1, T2> : IUnion
         where T1 : class
         where T2 : class
     {
@@ -125,7 +126,7 @@ namespace AggregatRoot.Infrastructure
         }
     }
 
-    public class UnionBox<T1, T2> : Union<T1, T2>
+    public class UnionBox<T1, T2> : Union<T1, T2> 
         where T1 : class
         where T2 : class
     {

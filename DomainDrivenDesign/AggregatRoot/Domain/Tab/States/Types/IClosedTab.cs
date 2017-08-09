@@ -1,4 +1,4 @@
-﻿namespace AggregatRoot.Domain.Tab.States
+﻿namespace AggregatRoot.Domain.Tab.States.Types
 {
     public interface IClosedTab
     {

@@ -3,9 +3,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AggregatRoot.Domain.Tab;
+using AggregatRoot.Domain.Tab.EventHandlers;
+using AggregatRoot.Domain.Tab.Events;
 using AggregatRoot.Domain.Tab.States;
-using AggregatRoot.Events.Handlers;
-using AggregatRoot.Events.Messages;
+using AggregatRoot.Domain.Tab.States.Types;
 
 namespace AggregatRoot
 {
@@ -23,6 +24,14 @@ namespace AggregatRoot
                 new TabOpendEvent("Saba"),
                 new CreatedTab(127, "VIP-Table")
             );
+
+            new TabAggregateRoot(
+                new CreatedTab(127, "VIP-Table")
+            ).Apply(
+                new TabEvent(
+                    new TabOpendEvent("Saba")
+                )
+            ).Apply(null);
         }
     }
 }

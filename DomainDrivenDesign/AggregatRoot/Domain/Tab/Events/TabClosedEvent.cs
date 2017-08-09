@@ -1,6 +1,6 @@
 ﻿using AggregatRoot.Infrastructure;
 
-namespace AggregatRoot.Events.Messages
+namespace AggregatRoot.Domain.Tab.Events
 {
     public class TabClosedEvent : IDomainEvent
     {

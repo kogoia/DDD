@@ -1,9 +1,8 @@
-﻿using AggregatRoot.Events.Messages;
-using AggregatRoot.Infrastructure;
+﻿using AggregatRoot.Infrastructure;
 
-namespace AggregatRoot.Events
+namespace AggregatRoot.Domain.Tab.Events
 {
-    public class TabEvent : Union<TabOpendEvent, TabClosedEvent, TabCreatedEvent>
+    public class TabEvent : Union<TabOpendEvent, TabClosedEvent, TabCreatedEvent>, IDomainEvent
     {
         public TabEvent(TabOpendEvent t1) : base(t1)
         {

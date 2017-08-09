@@ -1,7 +1,6 @@
-﻿using AggregatRoot.Domain.Tab.States;
-using AggregatRoot.Infrastructure;
+﻿using AggregatRoot.Infrastructure;
 
-namespace AggregatRoot.Domain.Tab
+namespace AggregatRoot.Domain.Tab.States.Types
 {
     public class Tab : Union<IDefaultTab, IOpendTab, IClosedTab>
     {
