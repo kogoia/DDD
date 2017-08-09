@@ -38,24 +38,29 @@ namespace AggregatRoot.Infrastructure
 
     public class Applied<TEntity> : IApplicable<TEntity>
     {
+        private readonly IEnumerable<IDomainEvent> _evnts;
         private readonly TEntity _entity;
-        private readonly IDomainEvent _evnt;
 
         public Applied(TEntity entity)
-            : this(null, entity)
+            : this(new IDomainEvent[] {}, entity)
         {
             
         }
         public Applied(IDomainEvent evnt, TEntity entity)
+            : this(new [] { evnt }, entity)
         {
+        }
+
+        public Applied(IEnumerable<IDomainEvent> evnts, TEntity entity)
+        {
+            _evnts = evnts;
             _entity = entity;
-            _evnt = evnt;
         }
         public AppliedEventResult<TEntity> Apply()
         {
             return new AppliedEventResult<TEntity>(
-                    _entity, 
-                    new List<IDomainEvent>() { _evnt }
+                    _entity,
+                    _evnts
                 );
         }
     }

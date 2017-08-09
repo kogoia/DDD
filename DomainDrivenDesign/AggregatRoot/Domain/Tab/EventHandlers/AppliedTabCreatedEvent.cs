@@ -13,7 +13,6 @@ namespace AggregatRoot.Domain.Tab.EventHandlers
             this(
                     evnt, 
                     new Applied<TabType>(
-                        evnt,
                         new TabType(
                             new DefaultTab(evnt.TabId, evnt.Name)
                         )

@@ -31,6 +31,7 @@ namespace AggregatRoot.Infrastructure
 
         public IEnumerable<IDomainEvent> UncommitedEvents()
         {
+            return _ucommetedEvents;
             return _entity.Apply().Event();
         }
     }
