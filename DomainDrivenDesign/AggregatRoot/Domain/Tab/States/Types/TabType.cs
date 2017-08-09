@@ -2,17 +2,17 @@
 
 namespace AggregatRoot.Domain.Tab.States.Types
 {
-    public class Tab : Union<IDefaultTab, IOpendTab, IClosedTab>
+    public class TabType : Union<IDefaultTab, IOpendTab, IClosedTab>
     {
-        public Tab(IDefaultTab t1) : base(t1)
+        public TabType(IDefaultTab t1) : base(t1)
         {
         }
 
-        public Tab(IOpendTab t2) : base(t2)
+        public TabType(IOpendTab t2) : base(t2)
         {
         }
 
-        public Tab(IClosedTab t3) : base(t3)
+        public TabType(IClosedTab t3) : base(t3)
         {
         }
     }

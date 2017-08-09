@@ -1,18 +1,19 @@
 ﻿using AggregatRoot.Domain.Tab.EventHandlers;
 using AggregatRoot.Domain.Tab.Events;
 using AggregatRoot.Infrastructure;
+using AggregatRoot.Domain.Tab.States.Types;
 
 namespace AggregatRoot.Domain.Tab
 {
 
-    public class TabAggregateRoot : AggregateRoot<States.Types.Tab, TabEvent>
+    public class TabAggregateRoot : AggregateRoot<TabType, TabEvent>
     {
-        public TabAggregateRoot(IApplicable<States.Types.Tab> entity) : base(entity) {}
+        public TabAggregateRoot(IApplicable<TabType> entity) : base(entity) {}
 
-        protected override IApplicable<States.Types.Tab> Apply(States.Types.Tab tab, TabEvent evnt)
+        protected override IApplicable<TabType> Apply(TabType tab, TabEvent evnt)
         {
             return evnt
-                .Match<IApplicable<States.Types.Tab>>(
+                .Match<IApplicable<TabType>>(
                     toe => new AppliedTabOpendEvent(toe, tab),
                     tce => new AppliedTabClosedEvent(tce, tab),
                     tcre => new AppliedTabCreatedEvent(tcre)

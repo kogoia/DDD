@@ -14,7 +14,7 @@ namespace AggregatRoot
     {
         static void Main(string[] args)
         {
-            new Tab(
+            new TabType(
                 new ClosedTab(
                     new TabState(127)
                 )
