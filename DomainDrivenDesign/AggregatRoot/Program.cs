@@ -35,7 +35,7 @@ namespace AggregatRoot
                 new TabEvent(
                     new TabClosedEvent()
                 )
-            );
+            ).UncommitedEvents();
         }
     }
 }
