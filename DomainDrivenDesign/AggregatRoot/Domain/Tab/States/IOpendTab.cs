@@ -1,4 +1,4 @@
-﻿namespace AggregatRoot
+﻿namespace AggregatRoot.Domain.Tab.States
 {
     public interface IOpendTab
     {

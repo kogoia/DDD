@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AggregatRoot.Infrastructure.Unions
+namespace AggregatRoot.Infrastructure
 {
     public abstract class Union<T1, T2, T3, T4>
     where T1 : class

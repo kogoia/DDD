@@ -42,21 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TabCreatedEvent.cs" />
-    <Compile Include="Types\Interfaces\ClosedTab.cs" />
-    <Compile Include="Types\Interfaces\DefaultTab.cs" />
-    <Compile Include="Types\Implementations\IClosedTab.cs" />
-    <Compile Include="Types\Implementations\IDefaultTab.cs" />
-    <Compile Include="Infrastructure\EventSourcedRootEntity.cs" />
-    <Compile Include="Types\Implementations\IOpendTab.cs" />
-    <Compile Include="Messages\TabOpendEvent.cs" />
-    <Compile Include="Types\Interfaces\OpendTab.cs" />
-    <Compile Include="Types\Interfaces\Tab.cs" />
+    <Compile Include="Infrastructure\Appliable.cs" />
+    <Compile Include="Events\Handlers\AppliedTabClosedEvent.cs" />
+    <Compile Include="Events\Handlers\AppliedTabOpendEvent.cs" />
+    <Compile Include="Events\Handlers\CreatedTab.cs" />
+    <Compile Include="Infrastructure\IDomainEvent.cs" />
+    <Compile Include="Events\Messages\TabClosedEvent.cs" />
+    <Compile Include="Events\Messages\TabCreateEvent.cs" />
+    <Compile Include="Events\TabEvent.cs" />
+    <Compile Include="Events\Messages\TabCreatedEvent.cs" />
+    <Compile Include="Domain\Tab\States\ClosedTab.cs" />
+    <Compile Include="Domain\Tab\States\DefaultTab.cs" />
+    <Compile Include="Domain\Tab\States\IClosedTab.cs" />
+    <Compile Include="Domain\Tab\States\IDefaultTab.cs" />
+    <Compile Include="Domain\Tab\States\IOpendTab.cs" />
+    <Compile Include="Events\Messages\TabOpendEvent.cs" />
+    <Compile Include="Domain\Tab\States\OpendTab.cs" />
+    <Compile Include="Domain\Tab\Tab.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\Unions\DiscriminatedUnions.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnions.cs" />
     <Compile Include="TabAggregateRoot.cs" />
-    <Compile Include="Types\Interfaces\TabState.cs" />
+    <Compile Include="Domain\Tab\TabState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

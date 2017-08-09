@@ -1,56 +1,88 @@
 ﻿using System;
 using AggregatRoot.Infrastructure;
-using AggregatRoot.Messages;
 using System.Collections.Generic;
+using AggregatRoot.Domain.Tab;
+using AggregatRoot.Events;
+using AggregatRoot.Events.Handlers;
 
 namespace AggregatRoot
 {
-    public class TabAggregateRoot : EventSourcedRootEntity
-        <
-            TabOpendEvent, 
-            TabClosedEvent,
-            TabCreatedEvent,
-            Tab
-        >
+    public interface IAggregateRoot<in TEntityEvent>
     {
-        public TabAggregateRoot(IEnumerable<IDomainEvent> eventStream) : base(eventStream)
-        {
+        IAggregateRoot<TEntityEvent> Apply(TEntityEvent evnt);
+        IEnumerable<IDomainEvent> UncommitedEvents();
+    }
 
+    public class TabAggregateRoot : AggregateRoot<Tab, TabEvent>
+    {
+        public TabAggregateRoot(IApplicable<Tab> entity) : base(entity)
+        {
         }
 
-        public TabAggregateRoot(int tabId, string name)
-            : base(new List<IDomainEvent>() { new TabCreatedEvent(tabId, name) })
+        protected override IApplicable<Tab> Apply(Tab tab, TabEvent evnt)
         {
-        }
-
-        protected override Tab When(TabOpendEvent e)
-        {
-            return _root
-                .Match(
-                    (dTab) => new Tab(dTab.Opened()),
-                    (oTab) => throw new Exception("Can't open OpendTab"),
-                    (cTab) => throw new Exception("Can't open ClosedTab")
+            return evnt
+                .Match<IApplicable<Tab>>(
+                    toe => new AppliedTabOpendEvent(toe, tab),
+                    tce => new AppliedTabClosedEvent(tce, tab),
+                    tcre => new CreatedTab(tcre)
                 );
         }
 
-        protected override Tab When(TabClosedEvent e)
+        //public IAggregateRoot<TabEvent> Apply(TabEvent evnt)
+        //{
+        //    return new TabAggregateRoot(
+        //        evnt
+        //            .Match<IApplicable<Tab>>(
+        //                toe => new AppliedTabOpendEvent(toe, _tab),
+        //                tce => new AppliedTabClosedEvent(tce, _tab),
+        //                tcre => new CreatedTab(tcre)
+        //            )
+        //    );
+        //}
+    }
+
+
+    public abstract class AggregateRoot<TEntity, TEntityEvent> : IAggregateRoot<TEntityEvent>
+    {
+        private readonly IApplicable<TEntity> _entity;
+
+        protected AggregateRoot(IApplicable<TEntity> entity)
         {
-            return _root
-                .Match(
-                    (dTab) => throw new Exception("Can't open DefaultTab"),
-                    (oTab) => new Tab(oTab.Closed()),
-                    (cTab) => throw new Exception("Can't open ClosedTab")
-                );
+            _entity = entity;
         }
 
-        protected override Tab When(TabCreatedEvent e)
+        protected abstract IApplicable<TEntity> Apply(TEntity entity, TEntityEvent evnt);
+        public IAggregateRoot<TEntityEvent> Apply(TEntityEvent evnt)
         {
-            return new Tab(
-                        new DefaultTab(
-                            e.TabId,
-                            e.Name
-                        )
-                    );
+            return new FakeAggregateRoot<TEntity, TEntityEvent>(Apply, Apply(_entity.Apply().Result(), evnt));
+        }
+
+        public IEnumerable<IDomainEvent> UncommitedEvents()
+        {
+            return _entity.Apply().Event();
+        }
+    }
+
+    public class FakeAggregateRoot<TEntity, TEntityEvent> : IAggregateRoot<TEntityEvent>
+    {
+        private readonly Func<TEntity, TEntityEvent, IApplicable<TEntity>> _f;
+        private readonly IApplicable<TEntity> _entity;
+
+        public FakeAggregateRoot(Func<TEntity, TEntityEvent, IApplicable<TEntity>> f, IApplicable<TEntity> entity)
+        {
+            _f = f;
+            _entity = entity;
+        }
+
+        public IAggregateRoot<TEntityEvent> Apply(TEntityEvent evnt)
+        {
+            return new FakeAggregateRoot<TEntity, TEntityEvent>(_f, _f(_entity.Apply().Result(), evnt));
+        }
+
+        public IEnumerable<IDomainEvent> UncommitedEvents()
+        {
+            return _entity.Apply().Event();
         }
     }
 

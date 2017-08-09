@@ -1,4 +1,4 @@
-﻿namespace AggregatRoot
+﻿namespace AggregatRoot.Domain.Tab.States
 {
     public class DefaultTab : IDefaultTab
     {
@@ -6,7 +6,8 @@
         {
 
         }
-        public IOpendTab Opened()
+
+        public IOpendTab Opened(string waiter)
         {
             return new OpendTab();
         }

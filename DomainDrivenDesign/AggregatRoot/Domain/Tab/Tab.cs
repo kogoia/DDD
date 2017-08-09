@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AggregatRoot.Infrastructure.Unions;
+﻿using AggregatRoot.Domain.Tab.States;
+using AggregatRoot.Infrastructure;
 
-namespace AggregatRoot
+namespace AggregatRoot.Domain.Tab
 {
     public class Tab : Union<IDefaultTab, IOpendTab, IClosedTab>
     {

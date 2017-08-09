@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AggregatRoot
+namespace AggregatRoot.Domain.Tab.States
 {
     public class OpendTab : IOpendTab
     {

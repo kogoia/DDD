@@ -1,6 +1,4 @@
-﻿using AggregatRoot.Types.Interfaces;
-
-namespace AggregatRoot
+﻿namespace AggregatRoot.Domain.Tab.States
 {
     public class ClosedTab : IClosedTab
     {

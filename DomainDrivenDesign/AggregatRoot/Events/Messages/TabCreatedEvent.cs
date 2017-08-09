@@ -1,6 +1,6 @@
-﻿using AggregatRoot.Messages;
+﻿using AggregatRoot.Infrastructure;
 
-namespace AggregatRoot
+namespace AggregatRoot.Events.Messages
 {
     public class TabCreatedEvent : IDomainEvent
     {
