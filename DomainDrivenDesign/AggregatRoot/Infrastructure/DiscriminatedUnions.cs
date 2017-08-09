@@ -4,10 +4,10 @@ namespace AggregatRoot.Infrastructure
 {
     public interface IUnion { }
     public abstract class Union<T1, T2, T3, T4> : IUnion
-    where T1 : class
-    where T2 : class
-    where T3 : class
-    where T4 : class
+        where T1 : class
+        where T2 : class
+        where T3 : class
+        where T4 : class
     {
         private readonly T1 _t1;
         private readonly T2 _t2;

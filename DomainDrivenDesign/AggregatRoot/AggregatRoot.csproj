@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,10 +49,9 @@
     <Compile Include="Infrastructure\Appliable.cs" />
     <Compile Include="Domain\Tab\EventHandlers\AppliedTabClosedEvent.cs" />
     <Compile Include="Domain\Tab\EventHandlers\AppliedTabOpendEvent.cs" />
-    <Compile Include="Domain\Tab\EventHandlers\CreatedTab.cs" />
+    <Compile Include="Domain\Tab\EventHandlers\AppliedTabCreatedEvent.cs" />
     <Compile Include="Infrastructure\IDomainEvent.cs" />
     <Compile Include="Domain\Tab\Events\TabClosedEvent.cs" />
-    <Compile Include="Domain\Tab\Events\TabCreateEvent.cs" />
     <Compile Include="Domain\Tab\Events\TabEventType.cs" />
     <Compile Include="Domain\Tab\Events\TabCreatedEvent.cs" />
     <Compile Include="Domain\Tab\States\ClosedTab.cs" />

@@ -16,22 +16,26 @@ namespace AggregatRoot
         {
             new Tab(
                 new ClosedTab(
-                    new TabState("Gio 1")
+                    new TabState(127)
                 )
             );
 
             new AppliedTabOpendEvent(
                 new TabOpendEvent("Saba"),
-                new CreatedTab(127, "VIP-Table")
+                new AppliedTabCreatedEvent(127, "VIP-Table")
             );
 
             new TabAggregateRoot(
-                new CreatedTab(127, "VIP-Table")
+                new AppliedTabCreatedEvent(127, "VIP-Table")
             ).Apply(
                 new TabEvent(
                     new TabOpendEvent("Saba")
                 )
-            ).Apply(null);
+            ).Apply(
+                new TabEvent(
+                    new TabClosedEvent()
+                )
+            );
         }
     }
 }

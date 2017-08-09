@@ -1,18 +1,26 @@
-﻿namespace AggregatRoot.Domain.Tab
+﻿using System.Globalization;
+
+namespace AggregatRoot.Domain.Tab
 {
     public class TabState
     {
-        private string _name;
-        public string Name => _name;
-
-        public TabState(string name)
+        public int Id { get; }
+        public string Number { get; private set; }
+        public string Waiter { get; private set; }
+        public TabState(int id)
         {
-            _name = name;
+            Id = id;
         }
 
-        public TabState WithName(string name)
+        public TabState WithNumber(string number)
         {
-            _name = name;
+            Number = number;
+            return this;
+        }
+
+        public TabState WithwWiter(string waiter)
+        {
+            Waiter = waiter;
             return this;
         }
     }
