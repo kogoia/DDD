@@ -14,7 +14,7 @@ namespace AggregatRoot.Domain.Tab.EventHandlers
             return tab
                 .Match(
                     (dTab) => throw new Exception("Can't close DefaultTab"),
-                    (oTab) => new TabType(oTab.Closed()),
+                    (oTab) => new TabType(oTab.Closed(evnt.Price)),
                     (cTab) => throw new Exception("Can't close ClosedTab")
                 );
         }

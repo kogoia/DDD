@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AggregatRoot.Infrastructure
 {
@@ -15,7 +16,9 @@ namespace AggregatRoot.Infrastructure
         protected abstract IApplicable<TEntity> Apply(TEntity entity, TEntityEvent evnt);
         public IAggregateRoot<TEntityEvent> Apply(TEntityEvent evnt)
         {
-            return new FakeAggregateRoot<TEntity, TEntityEvent>(Apply, Apply(_entity.Apply().Result(), evnt));
+            var applied = _entity.Apply();
+
+            return new FakeAggregateRoot<TEntity, TEntityEvent>(Apply, Apply(applied.Result(), evnt), applied.Event().Concat(new List<IDomainEvent>() { (IDomainEvent)evnt.Content() }));
         }
 
         public IEnumerable<IDomainEvent> UncommitedEvents()

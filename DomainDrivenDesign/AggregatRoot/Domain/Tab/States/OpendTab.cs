@@ -5,9 +5,18 @@ namespace AggregatRoot.Domain.Tab.States
 {
     public class OpendTab : IOpendTab
     {
-        public IClosedTab Closed()
+        private readonly TabState _state;
+
+        public OpendTab(TabState state)
         {
-            throw new NotImplementedException();
+            _state = state;
+        }
+        public IClosedTab Closed(decimal price)
+        {
+            return new ClosedTab(
+                    _state,
+                    price
+                );
         }
     }
 

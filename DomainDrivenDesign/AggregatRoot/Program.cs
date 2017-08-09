@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,28 +15,30 @@ namespace AggregatRoot
     {
         static void Main(string[] args)
         {
-            new TabType(
-                new ClosedTab(
-                    new TabState(127)
-                )
-            );
+            //new TabType(
+            //    new ClosedTab(
+            //        new TabState(127)
+            //    )
+            //);
 
-            new AppliedTabOpendEvent(
-                new TabOpendEvent("Saba"),
-                new AppliedTabCreatedEvent(127, "VIP-Table")
-            );
+            //new AppliedTabOpendEvent(
+            //    new TabOpendEvent("Saba"),
+            //    new AppliedTabCreatedEvent(127, "VIP-Table")
+            //);
 
-            new TabAggregateRoot(
-                new AppliedTabCreatedEvent(127, "VIP-Table")
-            ).Apply(
-                new TabEvent(
-                    new TabOpendEvent("Saba")
-                )
-            ).Apply(
-                new TabEvent(
-                    new TabClosedEvent()
-                )
-            ).UncommitedEvents();
+            var events = new TabAggregateRoot(
+                             new AppliedTabCreatedEvent(127, "VIP-Table")
+                         ).Apply(
+                             new TabEvent(
+                                 new TabOpendEvent("Saba")
+                             )
+                         ).Apply(
+                             new TabEvent(
+                                 new TabClosedEvent(49.50m)
+                             )
+                         ).UncommitedEvents();
+
+            Console.ReadLine();
         }
     }
 }

@@ -2,7 +2,10 @@
 
 namespace AggregatRoot.Infrastructure
 {
-    public interface IUnion { }
+    public interface IUnion
+    {
+        object Content();
+    }
     public abstract class Union<T1, T2, T3, T4> : IUnion
         where T1 : class
         where T2 : class
@@ -42,6 +45,23 @@ namespace AggregatRoot.Infrastructure
             }
             throw new Exception("can't match");
         }
+
+        public object Content()
+        {
+            if (_t1 != null)
+            {
+                return _t1;
+            }
+            else if (_t2 != null)
+            {
+                return _t2;
+            }
+            else if (_t3 != null)
+            {
+                return _t3;
+            }
+            return _t4;
+        }
     }
 
     public abstract class Union<T1, T2, T3> : IUnion
@@ -74,6 +94,20 @@ namespace AggregatRoot.Infrastructure
                 return f3(_t3);
             }
             throw new Exception("can't match");
+        }
+
+        public object Content()
+        {
+            if (_t1 != null)
+            {
+                return _t1;
+            }
+            else if (_t2 != null)
+            {
+                return _t2;
+            }
+            
+            return _t3;
         }
 
         //public TResult Match<TAny,TResult>(
@@ -123,6 +157,15 @@ namespace AggregatRoot.Infrastructure
                 return f2(_t2);
             }
             throw new Exception("can't match");
+        }
+
+        public object Content()
+        {
+            if (_t1 != null)
+            {
+                return _t1;
+            }
+            return _t2;
         }
     }
 

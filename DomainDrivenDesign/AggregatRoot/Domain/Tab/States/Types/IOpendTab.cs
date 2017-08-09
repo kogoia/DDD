@@ -2,7 +2,7 @@
 {
     public interface IOpendTab
     {
-        IClosedTab Closed();
+        IClosedTab Closed(decimal price);
     }
 
 }
