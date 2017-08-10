@@ -1,15 +1,33 @@
 # DDD
 
 ```cs
-var events = new TabAggregateRoot(
-                 new AppliedTabCreatedEvent(127, "VIP-Table")
+var store = new List<Tuple<int, IDomainEventType>>()
+{
+    new Tuple<int, IDomainEventType>(
+        127, 
+        new TabEventType(
+            new TabCreatedEvent(127, "VIP-Table")
+        )
+    ),
+    new Tuple<int, IDomainEventType>(
+        127,
+        new TabEventType(
+            new TabOpendEvent("Saba")
+        )
+    )
+};
+
+
+var eventStream = new EventStream(
+                    127,
+                    store
+                );
+
+var events = new Tab(
+                eventStream
              ).Apply(
-                 new TabEvent(
-                     new TabOpendEvent("Saba")
-                 )
-             ).Apply(
-                 new TabEvent(
+                 new TabEventType(
                      new TabClosedEvent(49.50m)
                  )
-             ).UncommitedEvents();
+             ).UncommitedEvents(); // TabClosedEvent - 49.50m
 ```
