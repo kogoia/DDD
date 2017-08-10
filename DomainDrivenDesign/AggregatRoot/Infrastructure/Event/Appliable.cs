@@ -20,7 +20,7 @@ namespace AggregatRoot.Infrastructure.Event
             _entity = entity;
         }
         protected abstract TEntity When(TEvent evnt, TEntity entity);
-        public IAppliedEventResult<TEntity> Apply()
+        public IAppliedEventResult<TEntity> Appled()
         {
             return new PreparedAppliedEventResult<TEvent>(_event)
                         .Result(When, _entity);
@@ -43,7 +43,7 @@ namespace AggregatRoot.Infrastructure.Event
                 IApplicable<TEntity> entity
             )
         {
-            var applied = entity.Apply();
+            var applied = entity.Appled();
             return new AppliedEventResult<TEntity>(
                 whenFunc((TEvent)_event, applied.Result()),
                 applied

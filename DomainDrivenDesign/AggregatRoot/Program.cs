@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AggregatRoot.Domain.Tab;
-using AggregatRoot.Domain.Tab.EventHandlers;
 using AggregatRoot.Domain.Tab.Events;
-using AggregatRoot.Domain.Tab.States;
-using AggregatRoot.Domain.Tab.States.Types;
 using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot
@@ -16,19 +10,7 @@ namespace AggregatRoot
     {
         static void Main(string[] args)
         {
-            //new TabType(
-            //    new ClosedTab(
-            //        new TabState(127)
-            //    )
-            //);
-
-            //new AppliedTabOpendEvent(
-            //    new TabOpendEvent("Saba"),
-            //    new AppliedTabCreatedEvent(127, "VIP-Table")
-            //);
-
-
-            var store = new List<Tuple<int, IDomainEventType>>()
+            var eventStore = new List<Tuple<int, IDomainEventType>>()
             {
                 new Tuple<int, IDomainEventType>(
                     127, 
@@ -47,7 +29,7 @@ namespace AggregatRoot
 
             var eventStream = new EventStream(
                                 127,
-                                store
+                                eventStore
                             );
 
             var events = new Tab(
@@ -57,6 +39,17 @@ namespace AggregatRoot
                                  new TabClosedEvent(49.50m)
                              )
                          ).UncommitedEvents();
+
+
+
+            var events2 = new Tab(
+                            127,
+                            eventStore
+                        ).Apply(
+                            new TabEventType(
+                                new TabClosedEvent(49.50m)
+                            )
+                        ).UncommitedEvents();
 
             Console.ReadLine();
         }

@@ -4,7 +4,7 @@ using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Domain.Tab.Events
 {
-    public class TabEventType : Union<TabOpendEvent, TabClosedEvent, TabCreatedEvent>, IDomainEventType
+    public class TabEventType : DomainEventType<TabOpendEvent, TabClosedEvent, TabCreatedEvent>
     {
         public TabEventType(TabOpendEvent t1) : base(t1)
         {

@@ -7,7 +7,7 @@ using AggregatRoot.Infrastructure.Event;
 namespace AggregatRoot.Infrastructure.AggregateRoot
 {
     public abstract class AggregateRoot<TEntity, TEventType> : IAggregateRoot<TEventType>
-        where TEventType : IUnion, IDomainEventType
+        where TEventType : IUnion, IDomainEventType //, new()
     {
         private readonly IApplicable<TEntity> _entity;
         private readonly IEventStream _eventStream;
@@ -19,17 +19,16 @@ namespace AggregatRoot.Infrastructure.AggregateRoot
         }
 
         protected abstract IApplicable<TEntity> When(TEntity entity, TEventType evnt);
+
+        //TODO: refactor this method
         public IAggregateRoot<TEventType> Apply(TEventType evnt)
         {
-            var entity1 = _eventStream.Aggregate(_entity, (acc, next) =>
-            {
-                var result = When(acc.Apply().Result(), (TEventType)next);
-                return result;
-            });
+            
+            var restoredEntity = _eventStream.Aggregate(_entity, (acc, next) => When(acc.Appled().Result(), (TEventType)next));
 
-            IApplicable<TEntity> entity = entity1 == null ? _entity : new Applied<TEntity>(entity1.Apply().Result());
+            var entity = restoredEntity == null ? _entity : new Applied<TEntity>(restoredEntity.Appled().Result());
 
-            var applied = entity.Apply();
+            var applied = entity.Appled();
             return new FakeAggregateRoot<TEntity, TEventType>(
                         When,
                         When(applied.Result(), evnt), 
@@ -41,15 +40,20 @@ namespace AggregatRoot.Infrastructure.AggregateRoot
 
         public IEnumerable<IDomainEvent> UncommitedEvents()
         {
-            return _entity.Apply().Events();
+            // TODO: maybe we need cache 
+            return _entity.Appled().Events();
         }
 
+        //public IEventTypes EventTypes()
+        //{
+        //    return new TEventType().EventTypes();
+        //}
     }
 
     public class EmptyApplicable<TEntity> : IApplicable<TEntity>
         where TEntity : class
     {
-        public IAppliedEventResult<TEntity> Apply()
+        public IAppliedEventResult<TEntity> Appled()
         {
             return new AppliedEventEmptyResult<TEntity>();
         }

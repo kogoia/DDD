@@ -26,7 +26,7 @@ namespace AggregatRoot.Infrastructure.AggregateRoot
 
         public IAggregateRoot<TEventType> Apply(TEventType evnt)
         {
-            var applied = _entity.Apply();
+            var applied = _entity.Appled();
             _ucommetedEvents.ToList().Add((IDomainEvent)evnt.Content());
             return new FakeAggregateRoot<TEntity, TEventType>(_f, _f(applied.Result(), evnt), _ucommetedEvents);
         }

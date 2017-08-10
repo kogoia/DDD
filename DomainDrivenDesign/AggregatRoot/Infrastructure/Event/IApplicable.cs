@@ -2,6 +2,6 @@
 {
     public interface IApplicable<out TEntity>
     {
-        IAppliedEventResult<TEntity> Apply();
+        IAppliedEventResult<TEntity> Appled();
     }
 }

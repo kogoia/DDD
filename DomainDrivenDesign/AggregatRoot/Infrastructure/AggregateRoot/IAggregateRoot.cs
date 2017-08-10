@@ -4,7 +4,11 @@ using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Infrastructure.AggregateRoot
 {
-    public interface IAggregateRoot<in TEventType>
+    public interface IAggregateRoot
+    {
+        //IEventTypes EventTypes();
+    }
+    public interface IAggregateRoot<in TEventType> : IAggregateRoot
         where TEventType : IUnion, IDomainEventType
     {
         IAggregateRoot<TEventType> Apply(TEventType evnt);

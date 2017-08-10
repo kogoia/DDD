@@ -22,7 +22,7 @@ namespace AggregatRoot.Infrastructure.Event
             _evnts = evnts;
             _entity = entity;
         }
-        public IAppliedEventResult<TEntity> Apply()
+        public IAppliedEventResult<TEntity> Appled()
         {
             return new AppliedEventResult<TEntity>(
                     _entity,

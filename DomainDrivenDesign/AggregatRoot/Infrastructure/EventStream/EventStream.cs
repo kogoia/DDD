@@ -2,15 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AggregatRoot.Infrastructure.Event
 {
-    public interface IEventStream : IEnumerable<IDomainEventType>
-    {
-    }
-
     public class EventStream : IEventStream
     {
         private readonly Lazy<IEnumerable<IDomainEventType>> _lazyEvents;
@@ -32,19 +26,6 @@ namespace AggregatRoot.Infrastructure.Event
         public IEnumerator<IDomainEventType> GetEnumerator()
         {
             return _lazyEvents.Value.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-    }
-
-    public class EmptyEventStream : IEventStream
-    {
-        public IEnumerator<IDomainEventType> GetEnumerator()
-        {
-            return new List<IDomainEventType>().GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using AggregatRoot.Domain.Tab.EventHandlers;
 using AggregatRoot.Domain.Tab.Events;
@@ -12,6 +13,8 @@ namespace AggregatRoot.Domain.Tab
 
     public class Tab : AggregateRoot<TabType, TabEventType>
     {
+        public Tab(int tabId, List<Tuple<int, IDomainEventType>> store)
+            : this(new EventStream(tabId, store)) {}
         public Tab(IEventStream eventStream)
             : this(new EmptyApplicable<TabType>(), eventStream) {}
         public Tab(int id, string number) :
