@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AggregatRoot.Infrastructure.DiscriminatedUnion;
+using AggregatRoot.Infrastructure.Event;
 
-namespace AggregatRoot.Infrastructure
+namespace AggregatRoot.Infrastructure.AggregateRoot
 {
     public abstract class AggregateRoot<TEntity, TEntityEvent> : IAggregateRoot<TEntityEvent>
         where TEntityEvent : IUnion, IDomainEvent

@@ -2,6 +2,8 @@
 using AggregatRoot.Domain.Tab.Events;
 using AggregatRoot.Infrastructure;
 using AggregatRoot.Domain.Tab.States.Types;
+using AggregatRoot.Infrastructure.AggregateRoot;
+using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Domain.Tab
 {

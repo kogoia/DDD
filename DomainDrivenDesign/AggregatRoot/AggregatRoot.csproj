@@ -42,14 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\AggregateRoot.cs" />
-    <Compile Include="Infrastructure\FakeAggregateRoot.cs" />
-    <Compile Include="Infrastructure\IAggregateRoot.cs" />
-    <Compile Include="Infrastructure\Appliable.cs" />
+    <Compile Include="Infrastructure\AggregateRoot\AggregateRoot.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\IUnion.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\Union3.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\Union4.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\UnionBox.cs" />
+    <Compile Include="Infrastructure\Event\Applied.cs" />
+    <Compile Include="Infrastructure\Event\AppliedEventResult.cs" />
+    <Compile Include="Infrastructure\AggregateRoot\FakeAggregateRoot.cs" />
+    <Compile Include="Infrastructure\AggregateRoot\IAggregateRoot.cs" />
+    <Compile Include="Infrastructure\Event\Appliable.cs" />
     <Compile Include="Domain\Tab\EventHandlers\AppliedTabClosedEvent.cs" />
     <Compile Include="Domain\Tab\EventHandlers\AppliedTabOpendEvent.cs" />
     <Compile Include="Domain\Tab\EventHandlers\AppliedTabCreatedEvent.cs" />
-    <Compile Include="Infrastructure\IDomainEvent.cs" />
+    <Compile Include="Infrastructure\Event\IApplicable.cs" />
+    <Compile Include="Infrastructure\Event\IDomainEvent.cs" />
     <Compile Include="Domain\Tab\Events\TabClosedEvent.cs" />
     <Compile Include="Domain\Tab\Events\TabEventType.cs" />
     <Compile Include="Domain\Tab\Events\TabCreatedEvent.cs" />
@@ -63,7 +70,7 @@
     <Compile Include="Domain\Tab\States\Types\TabType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnions.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\Union2.cs" />
     <Compile Include="Domain\Tab\TabAggregateRoot.cs" />
     <Compile Include="Domain\Tab\TabState.cs" />
   </ItemGroup>

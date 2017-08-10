@@ -1,4 +1,5 @@
 ﻿using AggregatRoot.Infrastructure;
+using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Domain.Tab.Events
 {

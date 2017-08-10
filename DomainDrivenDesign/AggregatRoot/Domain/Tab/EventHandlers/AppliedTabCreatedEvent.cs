@@ -2,6 +2,7 @@
 using AggregatRoot.Domain.Tab.States;
 using AggregatRoot.Domain.Tab.States.Types;
 using AggregatRoot.Infrastructure;
+using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Domain.Tab.EventHandlers
 {

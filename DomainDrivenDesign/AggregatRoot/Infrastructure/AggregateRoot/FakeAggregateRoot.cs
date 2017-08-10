@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AggregatRoot.Infrastructure.DiscriminatedUnion;
+using AggregatRoot.Infrastructure.Event;
 
-namespace AggregatRoot.Infrastructure
+namespace AggregatRoot.Infrastructure.AggregateRoot
 {
     public class FakeAggregateRoot<TEntity, TEntityEvent> : IAggregateRoot<TEntityEvent>
          where TEntityEvent : IUnion, IDomainEvent
