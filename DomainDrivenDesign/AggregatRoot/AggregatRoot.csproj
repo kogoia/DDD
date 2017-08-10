@@ -47,6 +47,7 @@
     <Compile Include="Infrastructure\DiscriminatedUnion\Union3.cs" />
     <Compile Include="Infrastructure\DiscriminatedUnion\Union4.cs" />
     <Compile Include="Infrastructure\DiscriminatedUnion\UnionBox.cs" />
+    <Compile Include="Infrastructure\Entity\Identity.cs" />
     <Compile Include="Infrastructure\Event\Applied.cs" />
     <Compile Include="Infrastructure\Event\AppliedEventResult.cs" />
     <Compile Include="Infrastructure\AggregateRoot\FakeAggregateRoot.cs" />
@@ -68,10 +69,12 @@
     <Compile Include="Domain\Tab\Events\TabOpendEvent.cs" />
     <Compile Include="Domain\Tab\States\OpendTab.cs" />
     <Compile Include="Domain\Tab\States\Types\TabType.cs" />
+    <Compile Include="Infrastructure\Event\IDomainEventType.cs" />
+    <Compile Include="Infrastructure\Event\IEventStream.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\DiscriminatedUnion\Union2.cs" />
-    <Compile Include="Domain\Tab\TabAggregateRoot.cs" />
+    <Compile Include="Domain\Tab\Tab.cs" />
     <Compile Include="Domain\Tab\TabState.cs" />
   </ItemGroup>
   <ItemGroup>

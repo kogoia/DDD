@@ -1,35 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using AggregatRoot.Domain.Tab.Events;
 
 namespace AggregatRoot.Infrastructure.Event
 {
 
-    public abstract class Appliable<TEntityEvent, TEntity> : IApplicable<TEntity>
-        where TEntityEvent: IDomainEvent
+    public abstract class Appliable<TEvent, TEntity> : IApplicable<TEntity>
+        where TEvent: IDomainEvent
     {
+        private readonly TEvent _event;
         private readonly IApplicable<TEntity> _entity;
-        private readonly TEntityEvent _evnt;
-
-        protected Appliable(TEntityEvent evnt, TEntity entity)
+        protected Appliable(TEvent evnt, TEntity entity)
             : this(evnt, new Applied<TEntity>(entity))
         { }
-
-        protected Appliable(TEntityEvent evnt, IApplicable<TEntity> entity)
+        protected Appliable(TEvent evnt, IApplicable<TEntity> entity)
         {
+            _event = evnt;
             _entity = entity;
-            _evnt = evnt;
+        }
+        protected abstract TEntity When(TEvent evnt, TEntity entity);
+        public IAppliedEventResult<TEntity> Apply()
+        {
+            return new PreparedAppliedEventResult<TEvent>(_event)
+                        .Result(When, _entity);
         }
 
-        protected abstract TEntity Apply(TEntityEvent evnt, TEntity entity);
-        public AppliedEventResult<TEntity> Apply()
+        
+    }
+
+    public class PreparedAppliedEventResult<TEvent>
+    {
+        private readonly IDomainEvent _event;
+
+        public PreparedAppliedEventResult(IDomainEvent evnt)
         {
-            var applied = _entity.Apply();
+            _event = evnt;
+        }
+
+        public AppliedEventResult<TEntity> Result<TEntity>(
+                Func<TEvent, TEntity, TEntity> whenFunc,
+                IApplicable<TEntity> entity
+            )
+        {
+            var applied = entity.Apply();
             return new AppliedEventResult<TEntity>(
-                    Apply(_evnt, applied.Result()),
-                    applied
-                        .Event()
-                        .Concat(new List<IDomainEvent>() { _evnt })
-                );
+                whenFunc((TEvent)_event, applied.Result()),
+                applied
+                    .Events()
+                    .Concat(new [] { _event })
+            );
         }
     }
 }

@@ -8,6 +8,7 @@ using AggregatRoot.Domain.Tab.EventHandlers;
 using AggregatRoot.Domain.Tab.Events;
 using AggregatRoot.Domain.Tab.States;
 using AggregatRoot.Domain.Tab.States.Types;
+using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot
 {
@@ -26,14 +27,23 @@ namespace AggregatRoot
             //    new AppliedTabCreatedEvent(127, "VIP-Table")
             //);
 
-            var events = new TabAggregateRoot(
-                             new AppliedTabCreatedEvent(127, "VIP-Table")
+
+            var eventStream = new EventStream(
+                                new TabEventType(
+                                    new TabCreatedEvent(127, "VIP-Table")
+                                ),
+                                new TabEventType(
+                                    new TabOpendEvent("Saba")
+                                )
+                                //new TabEventType(
+                                //    new TabClosedEvent(49.50m)
+                                //)
+                            );
+
+            var events = new Tab(
+                            eventStream//new AppliedTabCreatedEvent(127, "VIP-Table
                          ).Apply(
-                             new TabEvent(
-                                 new TabOpendEvent("Saba")
-                             )
-                         ).Apply(
-                             new TabEvent(
+                             new TabEventType(
                                  new TabClosedEvent(49.50m)
                              )
                          ).UncommitedEvents();

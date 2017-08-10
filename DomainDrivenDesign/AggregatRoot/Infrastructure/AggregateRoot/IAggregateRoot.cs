@@ -4,10 +4,10 @@ using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Infrastructure.AggregateRoot
 {
-    public interface IAggregateRoot<in TEntityEvent>
-        where TEntityEvent : IUnion, IDomainEvent
+    public interface IAggregateRoot<in TEventType>
+        where TEventType : IUnion, IDomainEventType
     {
-        IAggregateRoot<TEntityEvent> Apply(TEntityEvent evnt);
+        IAggregateRoot<TEventType> Apply(TEventType evnt);
         IEnumerable<IDomainEvent> UncommitedEvents();
     }
 

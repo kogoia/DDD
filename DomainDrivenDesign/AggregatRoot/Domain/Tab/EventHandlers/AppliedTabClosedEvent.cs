@@ -1,7 +1,6 @@
 ﻿using System;
 using AggregatRoot.Domain.Tab.Events;
 using AggregatRoot.Domain.Tab.States.Types;
-using AggregatRoot.Infrastructure;
 using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Domain.Tab.EventHandlers
@@ -10,7 +9,7 @@ namespace AggregatRoot.Domain.Tab.EventHandlers
     {
         public AppliedTabClosedEvent(TabClosedEvent evnt, TabType tab) : base(evnt, tab) {}
         public AppliedTabClosedEvent(TabClosedEvent evnt, IApplicable<TabType> tab) : base(evnt, tab) {}
-        protected override TabType Apply(TabClosedEvent evnt, TabType tab)
+        protected override TabType When(TabClosedEvent evnt, TabType tab)
         {
             return tab
                 .Match(

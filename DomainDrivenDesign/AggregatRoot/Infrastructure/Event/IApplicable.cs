@@ -1,7 +1,7 @@
 ﻿namespace AggregatRoot.Infrastructure.Event
 {
-    public interface IApplicable<TEntity>
+    public interface IApplicable<out TEntity>
     {
-        AppliedEventResult<TEntity> Apply();
+        IAppliedEventResult<TEntity> Apply();
     }
 }

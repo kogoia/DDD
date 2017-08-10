@@ -1,4 +1,4 @@
-﻿using AggregatRoot.Infrastructure;
+﻿using AggregatRoot.Infrastructure.DiscriminatedUnion;
 
 namespace AggregatRoot.Domain.Tab.States.Types
 {

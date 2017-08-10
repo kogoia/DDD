@@ -11,7 +11,7 @@ namespace AggregatRoot.Domain.Tab.EventHandlers
         public AppliedTabOpendEvent(TabOpendEvent evnt, TabType tab) : base(evnt, tab) {}
         public AppliedTabOpendEvent(TabOpendEvent evnt, IApplicable<TabType> tab) : base(evnt, tab) {}
 
-        protected override TabType Apply(TabOpendEvent evnt, TabType entity)
+        protected override TabType When(TabOpendEvent evnt, TabType entity)
         {
             return entity
                 .Match(

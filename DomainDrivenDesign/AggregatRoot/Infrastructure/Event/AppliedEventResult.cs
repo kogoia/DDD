@@ -2,7 +2,12 @@
 
 namespace AggregatRoot.Infrastructure.Event
 {
-    public class AppliedEventResult<TResult>
+    public interface IAppliedEventResult<out TResult>
+    {
+        TResult Result();
+        IEnumerable<IDomainEvent> Events();
+    }
+    public class AppliedEventResult<TResult> : IAppliedEventResult<TResult>
     {
         private readonly TResult _entity;
         private readonly IEnumerable<IDomainEvent> _evnt;
@@ -18,9 +23,23 @@ namespace AggregatRoot.Infrastructure.Event
             return _entity;
         }
 
-        public IEnumerable<IDomainEvent> Event()
+        public IEnumerable<IDomainEvent> Events()
         {
             return _evnt;
+        }
+    }
+
+    public class AppliedEventEmptyResult<TResult> : IAppliedEventResult<TResult>
+        where TResult : class
+    {
+        public TResult Result()
+        {
+            return null;
+        }
+
+        public IEnumerable<IDomainEvent> Events()
+        {
+            return new List<IDomainEvent>();
         }
     }
 }

@@ -1,19 +1,20 @@
 ﻿using AggregatRoot.Infrastructure;
+using AggregatRoot.Infrastructure.DiscriminatedUnion;
 using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Domain.Tab.Events
 {
-    public class TabEvent : Union<TabOpendEvent, TabClosedEvent, TabCreatedEvent>, IDomainEvent
+    public class TabEventType : Union<TabOpendEvent, TabClosedEvent, TabCreatedEvent>, IDomainEventType
     {
-        public TabEvent(TabOpendEvent t1) : base(t1)
+        public TabEventType(TabOpendEvent t1) : base(t1)
         {
         }
 
-        public TabEvent(TabClosedEvent t2) : base(t2)
+        public TabEventType(TabClosedEvent t2) : base(t2)
         {
         }
 
-        public TabEvent(TabCreatedEvent t3) : base(t3)
+        public TabEventType(TabCreatedEvent t3) : base(t3)
         {
         }
     }

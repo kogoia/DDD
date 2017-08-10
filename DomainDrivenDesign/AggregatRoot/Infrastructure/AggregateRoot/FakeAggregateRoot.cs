@@ -6,35 +6,34 @@ using AggregatRoot.Infrastructure.Event;
 
 namespace AggregatRoot.Infrastructure.AggregateRoot
 {
-    public class FakeAggregateRoot<TEntity, TEntityEvent> : IAggregateRoot<TEntityEvent>
-         where TEntityEvent : IUnion, IDomainEvent
+    public class FakeAggregateRoot<TEntity, TEventType> : IAggregateRoot<TEventType>
+         where TEventType : IUnion, IDomainEventType
     {
-        private readonly Func<TEntity, TEntityEvent, IApplicable<TEntity>> _f;
+        private readonly Func<TEntity, TEventType, IApplicable<TEntity>> _f;
         private readonly IApplicable<TEntity> _entity;
         private readonly IEnumerable<IDomainEvent> _ucommetedEvents;
-        public FakeAggregateRoot(Func<TEntity, TEntityEvent, IApplicable<TEntity>> f, IApplicable<TEntity> entity)
+        public FakeAggregateRoot(Func<TEntity, TEventType, IApplicable<TEntity>> f, IApplicable<TEntity> entity)
             : this(f, entity, new List<IDomainEvent>())
         {
         }
 
-        public FakeAggregateRoot(Func<TEntity, TEntityEvent, IApplicable<TEntity>> f, IApplicable<TEntity> entity, IEnumerable<IDomainEvent> ucommetedEvents)
+        public FakeAggregateRoot(Func<TEntity, TEventType, IApplicable<TEntity>> f, IApplicable<TEntity> entity, IEnumerable<IDomainEvent> ucommetedEvents)
         {
             _f = f;
             _entity = entity;
             _ucommetedEvents = ucommetedEvents;
         }
 
-        public IAggregateRoot<TEntityEvent> Apply(TEntityEvent evnt)
+        public IAggregateRoot<TEventType> Apply(TEventType evnt)
         {
             var applied = _entity.Apply();
             _ucommetedEvents.ToList().Add((IDomainEvent)evnt.Content());
-            return new FakeAggregateRoot<TEntity, TEntityEvent>(_f, _f(applied.Result(), evnt), _ucommetedEvents);
+            return new FakeAggregateRoot<TEntity, TEventType>(_f, _f(applied.Result(), evnt), _ucommetedEvents);
         }
 
         public IEnumerable<IDomainEvent> UncommitedEvents()
         {
             return _ucommetedEvents;
-            return _entity.Apply().Event();
         }
     }
 

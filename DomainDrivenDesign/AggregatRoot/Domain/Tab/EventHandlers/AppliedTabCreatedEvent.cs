@@ -26,7 +26,7 @@ namespace AggregatRoot.Domain.Tab.EventHandlers
         {
         }
 
-        protected override TabType Apply(TabCreatedEvent evnt, TabType entity)
+        protected override TabType When(TabCreatedEvent evnt, TabType entity)
         {
             return entity;
         }
