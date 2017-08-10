@@ -28,20 +28,30 @@ namespace AggregatRoot
             //);
 
 
+            var store = new List<Tuple<int, IDomainEventType>>()
+            {
+                new Tuple<int, IDomainEventType>(
+                    127, 
+                    new TabEventType(
+                        new TabCreatedEvent(127, "VIP-Table")
+                    )
+                ),
+                new Tuple<int, IDomainEventType>(
+                    127,
+                    new TabEventType(
+                        new TabOpendEvent("Saba")
+                    )
+                )
+            };
+
+
             var eventStream = new EventStream(
-                                new TabEventType(
-                                    new TabCreatedEvent(127, "VIP-Table")
-                                ),
-                                new TabEventType(
-                                    new TabOpendEvent("Saba")
-                                )
-                                //new TabEventType(
-                                //    new TabClosedEvent(49.50m)
-                                //)
+                                127,
+                                store
                             );
 
             var events = new Tab(
-                            eventStream//new AppliedTabCreatedEvent(127, "VIP-Table
+                            eventStream
                          ).Apply(
                              new TabEventType(
                                  new TabClosedEvent(49.50m)
