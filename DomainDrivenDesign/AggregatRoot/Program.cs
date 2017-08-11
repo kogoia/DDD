@@ -10,6 +10,8 @@ namespace AggregatRoot
     {
         static void Main(string[] args)
         {
+
+            var tabState = new TabState(1).FromJSON("{ \"Id\": 1, \"Number\": \"Vip-12\", \"Waiter\": \"asd\",\"Price\": 12.0}");
             var eventStore = new List<Tuple<int, IDomainEventType>>()
             {
                 new Tuple<int, IDomainEventType>(

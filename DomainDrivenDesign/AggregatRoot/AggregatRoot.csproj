@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +51,7 @@
     <Compile Include="Infrastructure\DiscriminatedUnion\Union3.cs" />
     <Compile Include="Infrastructure\DiscriminatedUnion\Union4.cs" />
     <Compile Include="Infrastructure\DiscriminatedUnion\UnionBox.cs" />
+    <Compile Include="Infrastructure\EntityState\EntityState.cs" />
     <Compile Include="Infrastructure\Entity\Identity.cs" />
     <Compile Include="Infrastructure\Event\Applied.cs" />
     <Compile Include="Infrastructure\Event\AppliedEventResult.cs" />
@@ -84,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

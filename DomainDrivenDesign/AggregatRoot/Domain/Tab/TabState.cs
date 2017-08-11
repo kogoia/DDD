@@ -1,13 +1,16 @@
-﻿using System.Globalization;
+﻿using AggregatRoot.Infrastructure.EntityState;
+using System.Globalization;
+using System;
+using Newtonsoft.Json;
 
 namespace AggregatRoot.Domain.Tab
 {
-    public class TabState
+    public class TabState : EntityState<TabState>
     {
         public int Id { get; }
-        public string Number { get; private set; }
-        public string Waiter { get; private set; }
-        public decimal Price { get; private set; }
+        public string Number { get;  protected set; }
+        public string Waiter { get;  protected set; }
+        public decimal Price { get;  protected set; }
         public TabState(int id)
         {
             Id = id;
@@ -29,6 +32,11 @@ namespace AggregatRoot.Domain.Tab
         {
             Price = price;
             return this;
+        }
+
+        public override TabState FromJSON(string json)
+        {
+            return JsonConvert.DeserializeObject<TabState>(json);
         }
     }
 }
