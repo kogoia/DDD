@@ -1,17 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using DDD.Infrastructure.Infrastructure.DiscriminatedUnion;
+using DDD.Infrastructure.Infrastructure.EntityState;
 using DDD.Infrastructure.Infrastructure.Event;
 using DDD.Infrastructure.Infrastructure.EventStream;
 
 namespace DDD.Infrastructure.Infrastructure.AggregateRoot
 {
     public abstract class AggregateRoot<TEntity, TEventType> : IAggregateRoot<TEventType>
+        where TEntity : EntityState<TEntity>
         where TEventType : IUnion, IDomainEventType //, new()
     {
+        private readonly IEntityState<TEntity> _entityState;
         private readonly IApplicable<TEntity> _entity;
         private readonly IEventStream _eventStream;
 
+        protected AggregateRoot(EntityState<TEntity> entityState)
+        {
+            _entityState = entityState;
+            
+        }
         protected AggregateRoot(IApplicable<TEntity> entity, IEventStream eventStream)
         {
             _entity = entity;

@@ -9,8 +9,8 @@ namespace DDD.Infrastructure.Infrastructure.Entity
         //IEventTypes EventTypes();
     }
 
-    public abstract class Identity<TAggregatType> : IIdentity
-        where TAggregatType : IAggregateRoot, new()
+    public abstract class Identity<TEntity> : IIdentity
+        where TEntity : IEntity, new()
     {
         protected Identity()
         {
@@ -28,6 +28,19 @@ namespace DDD.Infrastructure.Infrastructure.Entity
         //}
     }
 
+    public interface IEntity
+    {
+        
+    }
+
+    public abstract class Entity<TEntity>
+        where TEntity : IEntity, new()
+    {
+        public Entity(Identity<TEntity> identity)
+        {
+            
+        }
+    }
     //public class TabId : Identity<Tab>
     //{
         

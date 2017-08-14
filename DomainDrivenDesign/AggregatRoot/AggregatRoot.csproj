@@ -59,7 +59,7 @@
     <Compile Include="Domain\Tab\States\Types\IOpendTab.cs" />
     <Compile Include="Domain\Tab\Events\TabOpendEvent.cs" />
     <Compile Include="Domain\Tab\States\OpendTab.cs" />
-    <Compile Include="Domain\Tab\States\Types\TabType.cs" />
+    <Compile Include="Domain\Tab\States\TabType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\Tab\Tab.cs" />

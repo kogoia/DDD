@@ -49,6 +49,7 @@
     <Compile Include="Infrastructure\DiscriminatedUnion\Union4.cs" />
     <Compile Include="Infrastructure\DiscriminatedUnion\UnionBox.cs" />
     <Compile Include="Infrastructure\EntityState\EntityState.cs" />
+    <Compile Include="Infrastructure\EntityState\IEntityState.cs" />
     <Compile Include="Infrastructure\Entity\Identity.cs" />
     <Compile Include="Infrastructure\EventStore\IEventStore.cs" />
     <Compile Include="Infrastructure\EventStream\EmptyEventStream.cs" />
@@ -60,8 +61,12 @@
     <Compile Include="Infrastructure\Event\IApplicable.cs" />
     <Compile Include="Infrastructure\Event\IDomainEvent.cs" />
     <Compile Include="Infrastructure\Event\IDomainEventType.cs" />
+    <Compile Include="Infrastructure\Store\IStateStore.cs" />
     <Compile Include="NastedState\Tab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
