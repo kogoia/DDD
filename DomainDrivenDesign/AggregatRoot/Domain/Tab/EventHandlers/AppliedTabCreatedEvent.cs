@@ -1,8 +1,8 @@
 ﻿using AggregatRoot.Domain.Tab.Events;
 using AggregatRoot.Domain.Tab.States;
 using AggregatRoot.Domain.Tab.States.Types;
-using AggregatRoot.Infrastructure;
-using AggregatRoot.Infrastructure.Event;
+
+using DDD.Infrastructure.Infrastructure.Event;
 
 namespace AggregatRoot.Domain.Tab.EventHandlers
 {

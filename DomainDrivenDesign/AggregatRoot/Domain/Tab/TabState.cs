@@ -1,6 +1,6 @@
-﻿using AggregatRoot.Infrastructure.EntityState;
-using System.Globalization;
+﻿using System.Globalization;
 using System;
+using DDD.Infrastructure.Infrastructure.EntityState;
 using Newtonsoft.Json;
 
 namespace AggregatRoot.Domain.Tab

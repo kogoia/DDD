@@ -1,6 +1,5 @@
-﻿using AggregatRoot.Infrastructure;
-using AggregatRoot.Infrastructure.DiscriminatedUnion;
-using AggregatRoot.Infrastructure.Event;
+﻿
+using DDD.Infrastructure.Infrastructure.Event;
 
 namespace AggregatRoot.Domain.Tab.Events
 {

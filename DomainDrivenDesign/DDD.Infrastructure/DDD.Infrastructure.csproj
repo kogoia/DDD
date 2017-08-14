@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC7DC7B9-191C-4F31-B8BB-0E103E19B919}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DDD.Infrastructure</RootNamespace>
+    <AssemblyName>DDD.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\AggregateRoot\AggregateRoot.cs" />
+    <Compile Include="Infrastructure\AggregateRoot\FakeAggregateRoot.cs" />
+    <Compile Include="Infrastructure\AggregateRoot\IAggregateRoot.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\IUnion.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\Union2.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\Union3.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\Union4.cs" />
+    <Compile Include="Infrastructure\DiscriminatedUnion\UnionBox.cs" />
+    <Compile Include="Infrastructure\EntityState\EntityState.cs" />
+    <Compile Include="Infrastructure\Entity\Identity.cs" />
+    <Compile Include="Infrastructure\EventStore\IEventStore.cs" />
+    <Compile Include="Infrastructure\EventStream\EmptyEventStream.cs" />
+    <Compile Include="Infrastructure\EventStream\EventStream.cs" />
+    <Compile Include="Infrastructure\EventStream\IEventStream.cs" />
+    <Compile Include="Infrastructure\Event\Appliable.cs" />
+    <Compile Include="Infrastructure\Event\Applied.cs" />
+    <Compile Include="Infrastructure\Event\AppliedEventResult.cs" />
+    <Compile Include="Infrastructure\Event\IApplicable.cs" />
+    <Compile Include="Infrastructure\Event\IDomainEvent.cs" />
+    <Compile Include="Infrastructure\Event\IDomainEventType.cs" />
+    <Compile Include="NastedState\Tab.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

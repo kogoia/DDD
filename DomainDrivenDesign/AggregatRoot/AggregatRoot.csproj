@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,25 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\EventModel.cs" />
-    <Compile Include="Infrastructure\AggregateRoot\AggregateRoot.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\IUnion.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\Union3.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\Union4.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\UnionBox.cs" />
-    <Compile Include="Infrastructure\EntityState\EntityState.cs" />
-    <Compile Include="Infrastructure\Entity\Identity.cs" />
-    <Compile Include="Infrastructure\Event\Applied.cs" />
-    <Compile Include="Infrastructure\Event\AppliedEventResult.cs" />
-    <Compile Include="Infrastructure\AggregateRoot\FakeAggregateRoot.cs" />
-    <Compile Include="Infrastructure\AggregateRoot\IAggregateRoot.cs" />
-    <Compile Include="Infrastructure\Event\Appliable.cs" />
     <Compile Include="Domain\Tab\EventHandlers\AppliedTabClosedEvent.cs" />
     <Compile Include="Domain\Tab\EventHandlers\AppliedTabOpendEvent.cs" />
     <Compile Include="Domain\Tab\EventHandlers\AppliedTabCreatedEvent.cs" />
-    <Compile Include="Infrastructure\EventStream\EmptyEventStream.cs" />
-    <Compile Include="Infrastructure\EventStream\EventStream.cs" />
-    <Compile Include="Infrastructure\Event\IApplicable.cs" />
-    <Compile Include="Infrastructure\Event\IDomainEvent.cs" />
     <Compile Include="Domain\Tab\Events\TabClosedEvent.cs" />
     <Compile Include="Domain\Tab\Events\TabEventType.cs" />
     <Compile Include="Domain\Tab\Events\TabCreatedEvent.cs" />
@@ -76,13 +60,8 @@
     <Compile Include="Domain\Tab\Events\TabOpendEvent.cs" />
     <Compile Include="Domain\Tab\States\OpendTab.cs" />
     <Compile Include="Domain\Tab\States\Types\TabType.cs" />
-    <Compile Include="Infrastructure\Event\IDomainEventType.cs" />
-    <Compile Include="Infrastructure\EventStore\IEventStore.cs" />
-    <Compile Include="Infrastructure\EventStream\IEventStream.cs" />
-    <Compile Include="NastedState\Tab.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\Union2.cs" />
     <Compile Include="Domain\Tab\Tab.cs" />
     <Compile Include="Domain\Tab\TabState.cs" />
   </ItemGroup>
@@ -90,6 +69,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DDD.Infrastructure\DDD.Infrastructure.csproj">
+      <Project>{cc7dc7b9-191c-4f31-b8bb-0e103e19b919}</Project>
+      <Name>DDD.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

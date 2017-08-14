@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using AggregatRoot.Domain.Tab;
 using AggregatRoot.Domain.Tab.Events;
-using AggregatRoot.Infrastructure.Event;
+using DDD.Infrastructure.Infrastructure.Event;
+using DDD.Infrastructure.Infrastructure.EventStream;
 
 namespace AggregatRoot
 {
