@@ -15,6 +15,7 @@ namespace AggregatRoot.Domain.Tab.Events
 
         public TabEventType(TabCreatedEvent t3) : base(t3)
         {
-        }
+
+        }      
     }
 }

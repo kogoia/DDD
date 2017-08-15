@@ -50,6 +50,14 @@ namespace DDD.Infrastructure.Infrastructure.Event
                 typeof(T3)
             );
         }
+
+        public class EventHandlers<T1, T2, T3>
+        {
+            public EventHandlers(T1 e)
+            {
+                    
+            }
+        }
     }
 
     public class EventTypeNames : IEventTypes
