@@ -43,9 +43,6 @@ namespace AggregatRoot
                              )
                          ).UncommitedEvents();
 
-            new TabEventType()
-            
-
             var events2 = new Tab(
                             127,
                             eventStore

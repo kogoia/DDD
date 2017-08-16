@@ -3,11 +3,11 @@
     public interface IDomainEvent { }
 
 
-    public interface IEventHandlers<TEventType>
-        where TEventType : DomainEventType<>
-    {
+    //public interface IEventHandlers<TEventType>
+    //    where TEventType : DomainEventType<>
+    //{
         
-    }
+    //}
 
 
 
