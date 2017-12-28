@@ -1,4 +1,7 @@
 ﻿using System;
+using DDD.Domain.Order;
+using DDD.Domain.Tab;
+using DDD.Infrastructure;
 
 namespace DDD
 {
@@ -6,12 +9,16 @@ namespace DDD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
 
-			new NextState<Order>(
-				new Order(),
-				new OrderCreatedCommand()
-			);
+            new NextState<Order>(
+                new Order(),
+                new OrderCreatedCommand()
+            );
+
+            new NextState<Tab>(
+                new Tab(new DefaultTab(127, "VIP")), 
+                new IEvent<Tab>[] { }
+            );
         }
     }
 }

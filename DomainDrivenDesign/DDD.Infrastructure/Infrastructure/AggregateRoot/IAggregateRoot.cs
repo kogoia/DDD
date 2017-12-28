@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using DDD.Infrastructure.Infrastructure.DiscriminatedUnion;
 using DDD.Infrastructure.Infrastructure.Event;
+using DiscriminatedUnion;
 
 namespace DDD.Infrastructure.Infrastructure.AggregateRoot
 {

@@ -1,6 +1,6 @@
-﻿using DDD.Infrastructure.Infrastructure.DiscriminatedUnion;
+﻿using AggregatRoot.Domain.Tab.States.Types;
 
-namespace AggregatRoot.Domain.Tab.States.Types
+namespace AggregatRoot.Domain.Tab.States
 {
     public class TabType : Union<IDefaultTab, IOpendTab, IClosedTab>
     {

@@ -43,11 +43,6 @@
     <Compile Include="Infrastructure\AggregateRoot\AggregateRoot.cs" />
     <Compile Include="Infrastructure\AggregateRoot\FakeAggregateRoot.cs" />
     <Compile Include="Infrastructure\AggregateRoot\IAggregateRoot.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\IUnion.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\Union2.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\Union3.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\Union4.cs" />
-    <Compile Include="Infrastructure\DiscriminatedUnion\UnionBox.cs" />
     <Compile Include="Infrastructure\EntityState\EntityState.cs" />
     <Compile Include="Infrastructure\EntityState\IEntityState.cs" />
     <Compile Include="Infrastructure\Entity\Identity.cs" />
@@ -65,8 +60,12 @@
     <Compile Include="NastedState\Tab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Infrastructure\NewFolder1\" />
+    <ProjectReference Include="..\DiscriminatedUnion\DiscriminatedUnion.csproj">
+      <Project>{afd49b2d-4786-49e9-b5f3-96ac6794d520}</Project>
+      <Name>DiscriminatedUnion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

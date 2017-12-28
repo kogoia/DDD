@@ -1,5 +1,6 @@
 ﻿using System;
 using AggregatRoot.Domain.Tab.Events;
+using AggregatRoot.Domain.Tab.States;
 using AggregatRoot.Domain.Tab.States.Types;
 using DDD.Infrastructure.Infrastructure.Event;
 

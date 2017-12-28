@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DDD.Infrastructure.Infrastructure.DiscriminatedUnion;
-using DDD.Infrastructure.Infrastructure.EntityState;
 using DDD.Infrastructure.Infrastructure.Event;
 using DDD.Infrastructure.Infrastructure.EventStream;
 

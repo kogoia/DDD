@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DDD.Infrastructure.Infrastructure.DiscriminatedUnion
+namespace DiscriminatedUnion
 {
 
 

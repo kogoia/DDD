@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DDD.Infrastructure.Infrastructure.DiscriminatedUnion
+namespace DiscriminatedUnion
 {
 
     public abstract class Union<T1, T2, T3> : IUnion

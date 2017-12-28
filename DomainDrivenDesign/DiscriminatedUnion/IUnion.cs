@@ -1,4 +1,4 @@
-﻿namespace DDD.Infrastructure.Infrastructure.DiscriminatedUnion
+﻿namespace DiscriminatedUnion
 {
     public interface IUnion
     {

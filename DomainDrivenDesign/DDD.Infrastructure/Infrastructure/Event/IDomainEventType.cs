@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DDD.Infrastructure.Infrastructure.DiscriminatedUnion;
+using DiscriminatedUnion;
 
 namespace DDD.Infrastructure.Infrastructure.Event
 {

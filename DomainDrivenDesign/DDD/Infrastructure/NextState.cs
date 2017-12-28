@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace DDD
+namespace DDD.Infrastructure
 {
     public class NextState<TModel>
     {
@@ -18,7 +15,6 @@ namespace DDD
 		}
 		public NextStateResult<TModel> State()
 		{
-			;
 			return new NextStateResult<TModel>(
 						events.Aggregate(model, (prev, next) => next.Handle(prev)), 
 						new string[] { "" }

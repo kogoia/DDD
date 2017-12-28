@@ -74,6 +74,10 @@
       <Project>{cc7dc7b9-191c-4f31-b8bb-0e103e19b919}</Project>
       <Name>DDD.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DiscriminatedUnion\DiscriminatedUnion.csproj">
+      <Project>{afd49b2d-4786-49e9-b5f3-96ac6794d520}</Project>
+      <Name>DiscriminatedUnion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

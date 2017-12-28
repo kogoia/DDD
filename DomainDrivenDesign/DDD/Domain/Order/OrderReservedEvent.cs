@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using DDD.Infrastructure;
 
-namespace DDD
+namespace DDD.Domain.Order
 {
 	public class OrderReservedEvent : IEvent<Order>
 	{

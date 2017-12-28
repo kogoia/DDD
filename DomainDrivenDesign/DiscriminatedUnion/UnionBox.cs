@@ -1,4 +1,4 @@
-﻿namespace DDD.Infrastructure.Infrastructure.DiscriminatedUnion
+﻿namespace DiscriminatedUnion
 {
     public class UnionBox<T1, T2> : Union<T1, T2>
         where T1 : class
