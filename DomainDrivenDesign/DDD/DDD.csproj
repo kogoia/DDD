@@ -9,4 +9,9 @@
     <ProjectReference Include="..\DiscriminatedUnion\DiscriminatedUnion.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\Order\Model\" />
+    <Folder Include="Domain\Tab\Messages\Commands\" />
+  </ItemGroup>
+
 </Project>
