@@ -1,6 +1,9 @@
 ﻿using System;
 using DDD.Domain.Order;
+using DDD.Domain.Order.Messages.Commands;
 using DDD.Domain.Tab;
+using DDD.Domain.Tab.Messages.Commands;
+using DDD.Domain.Tab.Messages.Events;
 using DDD.Infrastructure;
 
 namespace DDD
@@ -16,8 +19,8 @@ namespace DDD
             );
 
             new NextState<Tab>(
-                new Tab(new DefaultTab(127, "VIP")), 
-                new IEvent<Tab>[] { }
+                new TabCreatedEvent(127, "VIP Table"),
+                new PlaceOrderCommand()
             );
         }
     }

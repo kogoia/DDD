@@ -1,7 +1,8 @@
 ﻿
+using DDD.Domain.Tab.Model.DefaultTab;
 using DDD.Infrastructure;
 
-namespace DDD.Domain.Tab.Events
+namespace DDD.Domain.Tab.Messages.Events
 {
     public class TabCreatedEvent : IEvent<Tab>
     {
@@ -15,7 +16,9 @@ namespace DDD.Domain.Tab.Events
 
         public Tab Handle(Tab model)
         {
-            throw new System.NotImplementedException();
+            return new Tab(
+                        new DefaultTab(TabId, Name)
+                    );
         }
 
         public string Serialazed()

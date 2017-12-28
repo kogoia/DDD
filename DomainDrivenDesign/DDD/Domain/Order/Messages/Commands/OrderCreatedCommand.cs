@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DDD.Domain.Order.Messages.Events;
 using DDD.Infrastructure;
 
-namespace DDD.Domain.Order
+namespace DDD.Domain.Order.Messages.Commands
 {
 	public class OrderCreatedCommand : ICommand<Order>
 	{

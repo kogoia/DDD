@@ -1,6 +1,6 @@
-﻿using DDD.Domain.Tab.Types;
+﻿using DDD.Domain.Tab.Model.OpendTab;
 
-namespace DDD.Domain.Tab
+namespace DDD.Domain.Tab.Model.DefaultTab
 {
     public class DefaultTab : IDefaultTab
     {
@@ -21,7 +21,7 @@ namespace DDD.Domain.Tab
 
         public IOpendTab Opened(string waiter)
         {
-            return new OpendTab(
+            return new OpendTab.OpendTab(
                         _state.WithwWiter(waiter)
                    );
         }

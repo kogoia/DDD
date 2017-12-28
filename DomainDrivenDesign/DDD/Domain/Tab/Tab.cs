@@ -1,4 +1,6 @@
-﻿using DDD.Domain.Tab.Types;
+﻿using DDD.Domain.Tab.Model.ClosedTab;
+using DDD.Domain.Tab.Model.DefaultTab;
+using DDD.Domain.Tab.Model.OpendTab;
 using DiscriminatedUnion;
 
 namespace DDD.Domain.Tab

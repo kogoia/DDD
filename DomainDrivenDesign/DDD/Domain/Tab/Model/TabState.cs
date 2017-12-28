@@ -1,6 +1,6 @@
 ﻿
 
-namespace DDD.Domain.Tab
+namespace DDD.Domain.Tab.Model
 {
     public class TabState 
     {

@@ -1,8 +1,7 @@
-﻿
-using System;
+﻿using System;
 using DDD.Infrastructure;
 
-namespace DDD.Domain.Tab.Events
+namespace DDD.Domain.Tab.Messages.Events
 {
     public class TabOpendEvent : IEvent<Tab>
     {

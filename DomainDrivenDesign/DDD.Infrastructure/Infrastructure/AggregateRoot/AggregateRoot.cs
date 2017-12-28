@@ -2,6 +2,7 @@
 using System.Linq;
 using DDD.Infrastructure.Infrastructure.Event;
 using DDD.Infrastructure.Infrastructure.EventStream;
+using DiscriminatedUnion;
 
 namespace DDD.Infrastructure.Infrastructure.AggregateRoot
 {

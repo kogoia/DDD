@@ -1,4 +1,5 @@
 ﻿using AggregatRoot.Domain.Tab.States.Types;
+using DiscriminatedUnion;
 
 namespace AggregatRoot.Domain.Tab.States
 {

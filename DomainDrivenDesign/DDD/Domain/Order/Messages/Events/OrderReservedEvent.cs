@@ -1,7 +1,7 @@
 ﻿using System;
 using DDD.Infrastructure;
 
-namespace DDD.Domain.Order
+namespace DDD.Domain.Order.Messages.Events
 {
 	public class OrderReservedEvent : IEvent<Order>
 	{

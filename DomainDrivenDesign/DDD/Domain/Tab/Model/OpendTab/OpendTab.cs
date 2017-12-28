@@ -1,6 +1,6 @@
-﻿using DDD.Domain.Tab.Types;
+﻿using DDD.Domain.Tab.Model.ClosedTab;
 
-namespace DDD.Domain.Tab
+namespace DDD.Domain.Tab.Model.OpendTab
 {
     public class OpendTab : IOpendTab
     {
@@ -12,7 +12,7 @@ namespace DDD.Domain.Tab
         }
         public IClosedTab Closed(decimal price)
         {
-            return new ClosedTab(
+            return new ClosedTab.ClosedTab(
                     _state,
                     price
                 );

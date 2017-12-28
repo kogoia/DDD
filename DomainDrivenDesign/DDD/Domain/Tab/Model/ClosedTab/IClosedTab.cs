@@ -1,4 +1,4 @@
-﻿namespace DDD.Domain.Tab.Types
+﻿namespace DDD.Domain.Tab.Model.ClosedTab
 {
     public interface IClosedTab
     {

@@ -1,4 +1,6 @@
-﻿namespace DDD.Domain.Tab.Types
+﻿using DDD.Domain.Tab.Model.OpendTab;
+
+namespace DDD.Domain.Tab.Model.DefaultTab
 {
     public interface IDefaultTab
     {
