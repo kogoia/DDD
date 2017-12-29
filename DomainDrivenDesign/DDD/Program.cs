@@ -12,7 +12,6 @@ namespace DDD
     {
         static void Main(string[] args)
         {
-
             new NextState<Order>(
                 new Order(),
                 new OrderCreatedCommand()
@@ -20,7 +19,7 @@ namespace DDD
 
             new NextState<Tab>(
                 new TabCreatedEvent(127, "VIP Table"),
-                new PlaceOrderCommand()
+                new PlaceOrderCommand("VIP Table", "Waiter 1")
             );
         }
     }
