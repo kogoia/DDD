@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DiscriminatedUnion\DiscriminatedUnion.csproj" />
+    <Folder Include="Domain\Order\Model\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Order\Model\" />
+    <PackageReference Include="Qweex.Unions" Version="1.0.3" />
   </ItemGroup>
 
 </Project>

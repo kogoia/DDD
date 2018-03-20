@@ -1,11 +1,11 @@
 ﻿using DDD.Domain.Tab.Model.ClosedTab;
 using DDD.Domain.Tab.Model.DefaultTab;
 using DDD.Domain.Tab.Model.OpendTab;
-using DiscriminatedUnion;
+using Qweex.Unions.Kind3;
 
 namespace DDD.Domain.Tab
 {
-    public class Tab : Union<IDefaultTab, IOpendTab, IClosedTab>
+    public class Tab : TUnion<IDefaultTab, IOpendTab, IClosedTab>
     {
         public Tab(IDefaultTab t1) : base(t1)
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using DDD.Infrastructure;
+using Qweex.Unions;
 
 namespace DDD.Domain.Tab.Messages.Events
 {
