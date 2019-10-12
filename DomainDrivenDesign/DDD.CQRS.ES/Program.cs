@@ -27,7 +27,26 @@ namespace DDD.CQRS.ES
                 )
             ).Handle(new StockVehicle("1"));
         }
+        public interface EntityStore<TEntity>
+        {
+            public TEntity LookUp(object entityId);
+        }
 
+        public class EventStore<TEntity> : EntityStore<TEntity>
+        {
+            public TEntity LookUp(object entityId)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public class CurrentState<TEntity> : EntityStore<TEntity>
+        {
+            public TEntity LookUp(object entityId)
+            {
+                throw new NotImplementedException();
+            }
+        }
         public static IEnumerable<Message> StockVehicle(StockVehicle command, Vehicle state)
         {
             yield return new VehicleStocked();
