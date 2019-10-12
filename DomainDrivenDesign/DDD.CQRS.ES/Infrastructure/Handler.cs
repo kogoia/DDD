@@ -3,6 +3,17 @@ using System.Collections.Generic;
 
 namespace DDD.CQRS.ES.Infrastructure
 {
+    public class @Can<TCommand, TEntity> : Reaction<TCommand, TEntity>
+    {
+        public @Can(Func<TCommand, TEntity, bool> check)
+        {
+
+        }
+        public (Type eventType, Func<TEntity, Message, (TEntity state, IEnumerable<Message>)> react) Content()
+        {
+            throw new NotImplementedException();
+        }
+    }
     public class @Handler<TCommand, TEntity> : Reaction<TCommand, TEntity>
         where TCommand : Command
     {

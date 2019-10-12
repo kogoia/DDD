@@ -1,4 +1,8 @@
-﻿using System.Linq;
+﻿using DDD.CQRS.ES.VehicleDomain.State;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using static DDD.CQRS.ES.Program;
 
 namespace DDD.CQRS.ES.Infrastructure
 {
@@ -9,6 +13,7 @@ namespace DDD.CQRS.ES.Infrastructure
         private readonly Reactions<TEntity> _behaviors;
 
         public Aggregate(
+                Reactions<TEntity> cans,
                 Reactions<TEntity> handlers,
                 Reactions<TEntity> behaviors 
             )
@@ -16,7 +21,7 @@ namespace DDD.CQRS.ES.Infrastructure
             _handlers = handlers;
             _behaviors = behaviors;
         }
-
+        
         public TEntity Handle(Command command)
         {
             var seed = new TEntity();
