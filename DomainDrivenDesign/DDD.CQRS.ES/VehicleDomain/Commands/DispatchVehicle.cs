@@ -1,4 +1,6 @@
-﻿namespace DDD.CQRS.ES
+﻿using DDD.CQRS.ES.Infrastructure;
+
+namespace DDD.CQRS.ES.VehicleDomain.Commands
 {
     public class DispatchVehicle : Command
     {

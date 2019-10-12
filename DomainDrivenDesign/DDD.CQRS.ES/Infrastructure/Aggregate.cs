@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace DDD.CQRS.ES
+namespace DDD.CQRS.ES.Infrastructure
 {
     public class Aggregate<TEntity>
         where TEntity : new()

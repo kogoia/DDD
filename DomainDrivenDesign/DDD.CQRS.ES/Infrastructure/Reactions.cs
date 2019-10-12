@@ -1,4 +1,7 @@
-﻿namespace DDD.CQRS.ES
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace DDD.CQRS.ES.Infrastructure
 {
     public class Reactions<TEntity>
     {
@@ -11,7 +14,7 @@
             _reactions = reactions;
         }
 
-        public (TEntity state, Message[] messages) React(Message message, TEntity state)
+        public (TEntity state, IEnumerable<Message> messages) React(Message message, TEntity state)
         {
             return _reactions
                         .First(r => r.Content().eventType.Name == message.GetType().Name)

@@ -1,4 +1,4 @@
-﻿namespace DDD.CQRS.ES
+﻿namespace DDD.CQRS.ES.Infrastructure
 {
     public abstract class Command : Message 
     {
