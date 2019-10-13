@@ -3,23 +3,12 @@ using System.Collections.Generic;
 
 namespace DDD.CQRS.ES.Infrastructure
 {
-    public class @Can<TCommand, TEntity> : Reaction<TCommand, TEntity>
-    {
-        public @Can(Func<TCommand, TEntity, bool> check)
-        {
-
-        }
-        public (Type eventType, Func<TEntity, Message, (TEntity state, IEnumerable<Message>)> react) Content()
-        {
-            throw new NotImplementedException();
-        }
-    }
     public class @Handler<TCommand, TEntity> : Reaction<TCommand, TEntity>
         where TCommand : Command
     {
-        private readonly Func<TCommand, TEntity, IEnumerable<Message>> _handler;
+        private readonly Func<(TCommand command, TEntity state), IEnumerable<Message>> _handler;
 
-        public @Handler(Func<TCommand, TEntity, IEnumerable<Message>> handler)
+        public @Handler(Func<(TCommand command, TEntity state), IEnumerable<Message>> handler)
         {
             _handler = handler;
         }
@@ -29,10 +18,32 @@ namespace DDD.CQRS.ES.Infrastructure
                         typeof(TCommand),
                          (s, m) =>
                          {
-                             var messages = _handler((TCommand)m, s);
+                             var messages = _handler(((TCommand)m, s));
                              return (s, messages);
                          }
                     );
+        }
+    }
+
+    public class @Behavior<TEvent, TEntity> : Reaction<TEvent, TEntity>
+       where TEvent : Event
+    {
+        private readonly Func<(TEvent @event, TEntity state), TEntity> _behavior;
+
+        public @Behavior(Func<(TEvent @event, TEntity state), TEntity> behavior)
+        {
+            _behavior = behavior;
+        }
+        public (Type eventType, Func<TEntity, Message, (TEntity state, IEnumerable<Message>)> react) Content()
+        {
+            return (
+                        typeof(TEvent),
+                         (s, m) =>
+                         {
+                             var entity = _behavior(((TEvent)m, s));
+                             return (entity, new List<Message> { m });
+                         }
+            );
         }
     }
 }

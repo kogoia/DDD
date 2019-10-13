@@ -1,4 +1,4 @@
 ﻿namespace DDD.CQRS.ES.Infrastructure
 {
-    public interface Event : Message { }
+    public abstract class Event : Message { }
 }

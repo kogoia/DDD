@@ -14,22 +14,27 @@ namespace DDD.CQRS.ES
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Func<(int a, int b), int> sum = (t) => t.a + t.b;
             new Aggregate<Vehicle>(
-                new Reactions<Vehicle>(
-                    new @Can<StockVehicle, Vehicle>((c, s) => s.State == VehicleState.GIT)
-                ),
-                new Reactions<Vehicle>(
-                    new @Handler<StockVehicle, Vehicle>((c, s) => new List<Message> { new VehicleStocked() }),
-                    new @Handler<StockVehicle, Vehicle>(StockVehicle),
-                    new @Handler<DispatchVehicle, Vehicle>((c, s) => new List<Message> { new VehicleDispatched() })
-                ),
-                new Reactions<Vehicle>(
-                    new @Behavior<VehicleStocked, Vehicle>((e, s) => new Vehicle()),
-                    new @Behavior<VehicleDispatched, Vehicle>((e, s) => new Vehicle())
-                    //new VehicleAggregate()._Behavior<VehicleDispatched>((e, s) => new Vehicle())
-                )
-            //,
+                c => c
+                        .Handle<StockVehicle>(t => new List<Message> { new VehicleStocked() })
+                        .Handle<DispatchVehicle>(t => new List<Message> { new VehicleDispatched() }),
+                e => e
+                        .Behave<VehicleStocked>(t => new Vehicle())
+                        .Behave<VehicleDispatched>(t => new Vehicle())
+            );
+            
 
+            new Aggregate<Vehicle>(
+                new Handlers<Vehicle>(
+                    new @Handler<StockVehicle, Vehicle>(t => new List<Message> { new VehicleStocked() }),
+                    new @Handler<StockVehicle, Vehicle>(StockVehicle),
+                    new @Handler<DispatchVehicle, Vehicle>(t => new List<Message> { new VehicleDispatched() })
+                ),
+                new Behaviors<Vehicle>(
+                    new @Behavior<VehicleStocked, Vehicle>(t => new Vehicle()),
+                    new @Behavior<VehicleDispatched, Vehicle>(t => new Vehicle())
+                )
             ).Handle(new StockVehicle("1"));
 
             //new Aggregate<Vehicle>(
@@ -180,7 +185,7 @@ namespace DDD.CQRS.ES
                 throw new NotImplementedException();
             }
         }
-        public static IEnumerable<Message> StockVehicle(StockVehicle command, Vehicle state)
+        public static IEnumerable<Message> StockVehicle((StockVehicle command, Vehicle state) t)
         {
             yield return new VehicleStocked();
         }
